@@ -49,8 +49,8 @@ cyan = "#94e2d5"
 white = "#a6adc8"
 
 [shell]
-program = "/home/shoney/.cargo/bin/nu"
-args = ["--login"]
+program = "/usr/bin/bash"
+args = ["--login","-i"]
 
 [keyboard]
 bindings = [

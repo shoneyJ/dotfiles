@@ -970,4 +970,28 @@ source ~/.config/nushell/env.nu
 #if ($gem_bin | path exists) {
 # $env.PATH = ($env.PATH | prepend $gem_bin)
 #}
+
+# Set NVM directory and Node version
+let nvm_dir = $env.HOME | path join ".nvm"
+let node_ver = "v20.19.0"  # change this if you upgrade Node
+
+# Set Node bin path
+let node_bin = ($nvm_dir | path join "versions" "node" $node_ver "bin")
+
+# Add Node bin to PATH if it exists
+if ($node_bin | path exists) {
+    $env.PATH = ($env.PATH | prepend $node_bin)
+}
+
+# Set Go installation path
+let go_dir = "/usr/local/go"  # change if you installed Go somewhere else
+
+# Set Go bin path
+let go_bin = ($go_dir | path join "bin")
+
+# Add Go bin to PATH if it exists
+if ($go_bin | path exists) {
+    $env.PATH = ($env.PATH | prepend $go_bin)
+}
+
 source $"($nu.home-path)/.cargo/env.nu"
