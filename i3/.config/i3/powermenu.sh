@@ -1,21 +1,48 @@
-#!/bin/bash
+#!/bin/sh
 
-# Options
-lock=" Lock"
-poweroff="⏻ Power Off"
-options="$lock\n$poweroff"
+# rofi theme
+theme="$HOME/.config/rofi/main_without_icons.rasi"
 
-# rofi command
-chosen=$(echo -e "$options" | rofi -dmenu -i -p "Power Menu")
+get_options() {
+  echo " Poweroff"
+  echo " Reboot"
+  echo " Hibernate"
+  echo " Lock"
+  echo " Suspend"
+  echo " Log out"
+}
 
-case "$chosen" in
-"$lock")
+main() {
 
-  i3lock
+  # get choice from rofi
+  choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$theme")
 
-  ;;
-"$poweroff")
-  systemctl poweroff
-  ;;
-*) ;;
-esac
+  # run the selected command
+  case $choice in
+  ' Poweroff')
+    systemctl poweroff
+    ;;
+  ' Reboot')
+    systemctl reboot
+    ;;
+  ' Hibernate')
+    systemctl hibernate
+    ;;
+  ' Lock')
+    lock
+    ;;
+  ' Suspend')
+    systemctl suspend
+    ;;
+  ' Log out')
+    i3-msg exit
+    ;;
+  esac
+
+  # done
+  set -e
+}
+
+main &
+
+exit 0
