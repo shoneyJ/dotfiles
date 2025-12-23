@@ -1,0 +1,10 @@
+pkgname=my-dev-web
+pkgver=1.0
+pkgrel=1
+pkgdesc='my web application developemt'
+arch=(any)
+license=(None)
+depends=(
+  npm
+  yarn
+)

@@ -1,0 +1,29 @@
+
+# Built packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+*.pkg.tar.bz2
+*.pkg.tar.lz4
+*.pkg.tar.lrz
+*.pkg.tar.lzo
+*.pkg.tar.Z
+
+# Build directories
+src/
+pkg/
+
+# Downloaded sources (if you don't want them tracked)
+*.tar.*
+*.zip
+*.gz
+*.bz2
+*.xz
+*.zst
+*.7z
+
+# Logs
+*.log
+
+# Makepkg leftovers
+*.sig

@@ -1,0 +1,14 @@
+pkgname=my-dev-system
+pkgver=1.0
+pkgrel=1
+pkgdesc='my dev system'
+arch=(any)
+license=(None)
+depends=(
+  wireguard-tools
+  git
+  ripgrep
+  fd
+  bat
+  fzf
+)

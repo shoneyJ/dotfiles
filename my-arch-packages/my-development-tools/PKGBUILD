@@ -1,0 +1,15 @@
+pkgname=my-development-tools
+pkgver=1.0
+pkgrel=1
+pkgdesc='my development tool dependencies'
+arch=(any)
+license=(None)
+depends=(
+  neovim
+  code
+  git
+  docker
+  docker-compose
+  tmux
+
+)
