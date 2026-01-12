@@ -215,6 +215,23 @@ Item {
                 onClicked: {
                     root.inputField.text = ""
                 }
+              }
+
+GroupButton {
+                id: playTTSButton
+                baseWidth: height
+                buttonRadius: Appearance.rounding.small
+                enabled: inputCanvas.inputTextArea.text.length > 0
+                contentItem: MaterialSymbol {
+                    anchors.centerIn: parent
+                    horizontalAlignment: Text.AlignHCenter
+                    iconSize: Appearance.font.pixelSize.larger
+                    text: "play_arrow"
+                    color: playTTSButton.enabled ? Appearance.colors.colOnLayer1 : Appearance.colors.colSubtext
+                }
+                onClicked: {
+                    Quickshell.execDetached([Directories.translateTextToSpeechScriptPath, root.inputField.text]);
+                }
             }
         }
     }
