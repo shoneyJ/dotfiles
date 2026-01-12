@@ -143,7 +143,25 @@ Scope {
                 return;
             }
         }
+      }
+
+
+function toggleApp() {
+        if (GlobalStates.overviewOpen && overviewScope.dontAutoCancelSearch) {
+            GlobalStates.overviewOpen = false;
+            return;
+        }
+        for (let i = 0; i < overviewVariants.instances.length; i++) {
+            let panelWindow = overviewVariants.instances[i];
+            if (panelWindow.modelData.name == Hyprland.focusedMonitor.name) {
+                overviewScope.dontAutoCancelSearch = true;
+                panelWindow.setSearchingText(Config.options.search.prefix.app);
+                GlobalStates.overviewOpen = true;
+                return;
+            }
+        }
     }
+
 
     function toggleEmojis() {
         if (GlobalStates.overviewOpen && overviewScope.dontAutoCancelSearch) {
@@ -231,7 +249,8 @@ Scope {
         onPressed: {
             overviewScope.toggleClipboard();
         }
-    }
+      }
+
 
     GlobalShortcut {
         name: "overviewEmojiToggle"
@@ -239,6 +258,15 @@ Scope {
 
         onPressed: {
             overviewScope.toggleEmojis();
+        }
+    }
+
+    GlobalShortcut {
+        name: "overviewAppToggle"
+        description: "Toggle app overview widget"
+
+        onPressed: {
+            overviewScope.toggleApp();
         }
     }
 }
