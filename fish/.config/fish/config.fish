@@ -27,3 +27,6 @@ if status is-interactive # Commands to run in interactive sessions can go here
         exec /home/shoney/dotfiles/bin/tmux-main.sh
     end
 end
+
+# opencode
+fish_add_path /home/shoney/.opencode/bin
