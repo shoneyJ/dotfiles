@@ -2,6 +2,7 @@
 
 if ! tmux has-session -t main 2>/dev/null; then
   tmux new-session -d -s main
+  tmux set-option -t main automatic-rename off
 fi
 
 ssh_hosts=$(awk '/^Host / {for (i=2;i<=NF;i++) print $i}' ~/.ssh/config | sort -u)
@@ -9,6 +10,7 @@ ssh_hosts=$(awk '/^Host / {for (i=2;i<=NF;i++) print $i}' ~/.ssh/config | sort -
 for host in $ssh_hosts; do
   if ! tmux has-session -t $host 2>/dev/null; then
     tmux new-session -d -s $host
+    tmux set-option -t $host automatic-rename off
   fi
 
 done
